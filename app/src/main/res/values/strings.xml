@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Robot android</string>
+    <string name="title_activity_menu_demarrage">Menu_Demarrage</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="gamme">Gamme</string>
+    <string name="connexion">Connexion</string>
+    <string name="seConnecter">Se connecter</string>
+    <string name="identifiant">Identifiant</string>
+    <string name="retour">retour</string>
+    <string name="password">Mot de passe</string>
+    <string name="labelSpinnerListeAppareil">Liste des appareils wifi :</string>
+    <string name="envoieMessage">Envoyer un message sur le réseau :</string>
+    <string name="hintEnvoieMessage">Ecrivez votre message ici</string>
+    <string name="envoieMessageBtn">Envoyer</string>
+    <string name="etatWifi">état du Wifi :</string>
+
+    <!-- Dropdown moteurs de l'écran EditTache -->
+    <string-array name="listeMoteurs">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+
+</resources>
