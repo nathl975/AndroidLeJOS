@@ -3,15 +3,13 @@ package com.example.robotandroid;
 import java.io.Serializable;
 
 public class Utilisateur implements Serializable {
-    String nom;
     boolean admin;
     String login;
     String mdp;
 
 
-    public Utilisateur(String n, boolean a,String leLogin,String leMdp)
+    public Utilisateur(String leLogin, String leMdp, boolean a)
     {
-        this.nom = n;
         this.admin = a;
         this.login=leLogin;
         this.mdp=leMdp;

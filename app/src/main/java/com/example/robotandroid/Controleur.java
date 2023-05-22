@@ -67,7 +67,7 @@ public class Controleur {
 
     public void supprimerGamme(Gamme g)
     {
-        robot.supprimerGamme(g);
+        robot.supprimerGamme(g.getId());
     }
 
 
@@ -103,10 +103,12 @@ public class Controleur {
 
     public void connecter(String login, String pwd)
     {
-        if(utilisateurConnecté == null)
+        if(utilisateurConnecté == null) {
+            utilisateurConnecté = new Utilisateur(login, pwd, true);
             robot.connecter(login, pwd);
+        }
         else
-            System.out.println(String.format("Déjà connecté en tant que %s.", utilisateurConnecté.login));
+            System.out.printf("Déjà connecté en tant que %s.%n", utilisateurConnecté.login);
     }
 
 

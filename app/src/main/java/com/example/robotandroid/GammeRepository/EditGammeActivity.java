@@ -104,7 +104,7 @@ public class EditGammeActivity extends AbstractActivity {
             controleur.gammeEnCreation.id = ((TextView) findViewById(R.id.editText_titregamme)).getText().toString();
             controleur.gammeEnCreation.description = ((TextView) findViewById(R.id.muliTextView_descriptionGamme)).getText().toString();
 
-            controleur.creerGamme(controleur.gammeEnCreation);
+            controleur.modifierGamme(controleur.gammeEnCreation);
 
             startActivity(menuGamme);
             finish();

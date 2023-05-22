@@ -1,29 +1,19 @@
 package com.example.robotandroid.TacheRepository;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.RadioGroup;
 
 import com.example.robotandroid.AbstractActivity;
-import com.example.robotandroid.Controleur;
-import com.example.robotandroid.GammeRepository.Gamme;
 import com.example.robotandroid.OperationRepository.EditOperationActivity;
 import com.example.robotandroid.OperationRepository.Operation;
 import com.example.robotandroid.R;
 
 public class EditTacheActivity extends AbstractActivity {
-    //Affichage et edition d'une seule tache.
-    private RadioButton buttonTurn;
-    private RadioButton buttonWait;
-    private Spinner dropdownMoteur;
-    private TextView textValue;
-
     private Operation operation;
     private Tache tache;
 
@@ -43,46 +33,23 @@ public class EditTacheActivity extends AbstractActivity {
         operation = controleur.gammeEnCreation.getListeOperations().get(numOpe);
         tache = operation.getListeTaches().get(numTache);
 
-        buttonTurn = findViewById(R.id.radioButton_turn);
-        buttonWait = findViewById(R.id.radioButton_wait);
-        textValue = findViewById(R.id.editTextNumber_valeurTache);
-        dropdownMoteur = findViewById(R.id.dropdownMoteur);
+        //Affichage et edition d'une seule tache.
+        RadioButton buttonTurnRight = findViewById(R.id.radioButton_turnRight);
+        RadioButton buttonTurnLeft = findViewById(R.id.radioButton_turnLeft);
+        RadioButton buttonWait = findViewById(R.id.radioButton_wait);
+        RadioButton buttonGrab = findViewById(R.id.radioButton_grab);
+        RadioButton buttonDrop = findViewById(R.id.radioButton_drop);
 
-        buttonTurn.setChecked(tache.getTypeAction().equals(Tache.TypeAction.Tourner));
+        buttonTurnRight.setChecked(tache.getTypeAction().equals(Tache.TypeAction.TournerDroite));
+        buttonTurnLeft.setChecked(tache.getTypeAction().equals(Tache.TypeAction.TournerGauche));
         buttonWait.setChecked(tache.getTypeAction().equals(Tache.TypeAction.Attendre));
-        textValue.setText(String.valueOf(tache.getValeur()));
+        buttonGrab.setChecked(tache.getTypeAction().equals(Tache.TypeAction.Attraper));
+        buttonDrop.setChecked(tache.getTypeAction().equals(Tache.TypeAction.Poser));
+
         ImageButton buttonRetourOpe = findViewById(R.id.imagebutton_retourOpération);
-        buttonRetourOpe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RetourMenuOpe();
-            }
-        });
+        buttonRetourOpe.setOnClickListener(v -> RetourMenuOpe());
         Button buttonValiderTache = findViewById(R.id.button_validerTache);
-        buttonValiderTache.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ValiderEdition();
-            }
-        });
-
-        RadioButton radioTourner = findViewById(R.id.radioButton_turn);
-        radioTourner.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.dropdownMoteur).setEnabled(true);
-            }
-        });
-
-        RadioButton radioAttendre = findViewById(R.id.radioButton_wait);
-        radioAttendre.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.dropdownMoteur).setEnabled(false);
-            }
-        });
+        buttonValiderTache.setOnClickListener(v -> ValiderEdition());
     }
     public void RetourMenuOpe()
     {
@@ -94,14 +61,27 @@ public class EditTacheActivity extends AbstractActivity {
     }
 
     //Sauvegarde de la tache
+    @SuppressLint("NonConstantResourceId")
     public void ValiderEdition()
     {
-        tache.setValeur(Integer.parseInt(textValue.getText().toString()));
-        if(buttonTurn.isChecked()){
-            tache.setTypeAction(Tache.TypeAction.Tourner);
-            tache.setMoteur(dropdownMoteur.getSelectedItem().toString().charAt(0));
-        }else{
-            tache.setTypeAction(Tache.TypeAction.Attendre);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+
+        switch (radioGroup.getCheckedRadioButtonId()) {
+            case R.id.radioButton_turnRight:
+                tache.setTypeAction(Tache.TypeAction.TournerDroite);
+                break;
+            case R.id.radioButton_turnLeft:
+                tache.setTypeAction(Tache.TypeAction.TournerGauche);
+                break;
+            case R.id.radioButton_wait:
+                tache.setTypeAction(Tache.TypeAction.Attendre);
+                break;
+            case R.id.radioButton_grab:
+                tache.setTypeAction(Tache.TypeAction.Attraper);
+                break;
+            case R.id.radioButton_drop:
+                tache.setTypeAction(Tache.TypeAction.Poser);
+                break;
         }
 
         RetourMenuOpe();

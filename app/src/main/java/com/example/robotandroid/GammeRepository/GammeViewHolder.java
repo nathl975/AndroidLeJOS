@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.robotandroid.Controleur;
 import com.example.robotandroid.ListGammeActivity;
 import com.example.robotandroid.R;
+import com.example.robotandroid.WifiListener;
 
 public class GammeViewHolder extends RecyclerView.ViewHolder {
 //Le Gamme view Holder est la vue qui represente un item de la liste Gamme.
@@ -80,11 +81,14 @@ public class GammeViewHolder extends RecyclerView.ViewHolder {
     //Obsolete : Fonctionne avec une liste de gamme instanciée côté android
     public void SupprimerGamme()
     {
+
+        controleur.supprimerGamme(this.gamme);
         ListGammeActivity.ListeGamme.remove(this.gamme);
         //TODO : Demander la suppression au robot
         Intent menuList = new Intent(TextViewGamme.getContext(), ListGammeActivity.class);
         itemView.getContext().startActivity(menuList);
         ((Activity)itemView.getContext()).finish();
+
     }
     public void ExecuterGamme()
     {

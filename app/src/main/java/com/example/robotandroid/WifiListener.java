@@ -45,14 +45,21 @@ public class WifiListener implements IRobot
     //L'ancienne méthode GoToEditerGamme est trouvable dans GammeViewHolder
     @Override
     public void modifierGamme(Gamme g) {
-
+        Gson gson = new Gson();
+        JsonObject json = new JsonObject();
+        json.addProperty("action", "newG");
+        json.add("gamme", gson.toJsonTree(g));
+        envoyerMessage(gson.toJson(json));
     }
 
     //Methode supprimant une gamme dans la liste sauvegardée côté robot
     //L'ancienne méthode SupprimerGamme est trouvable dans GammeViewHolder
     @Override
-    public void supprimerGamme(Gamme g) {
-
+    public void supprimerGamme(String idGamme) {
+        JsonObject json = new JsonObject();
+        json.addProperty("action", "delG");
+        json.addProperty("idGamme", idGamme);
+        envoyerMessage(new Gson().toJson(json));
     }
 
 //On envoi la gamme a executer côté Robot

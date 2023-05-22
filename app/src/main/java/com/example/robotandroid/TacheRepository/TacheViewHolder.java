@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.robotandroid.GammeRepository.EditGammeActivity;
 import com.example.robotandroid.GammeRepository.Gamme;
 import com.example.robotandroid.OperationRepository.EditOperationActivity;
 import com.example.robotandroid.OperationRepository.Operation;
@@ -17,25 +16,15 @@ import com.example.robotandroid.R;
 public class TacheViewHolder extends RecyclerView.ViewHolder {
 
     private Tache tache;
-    private TextView textViewTypeAction;
-    private TextView textViewValue;
-    private Button buttonSuppr;
+    private final TextView textViewTypeAction;
+    private final Button buttonSuppr;
     private Gamme gamme;
     private Operation operation;
 
     public TacheViewHolder(View itemView) {
         super(itemView);
         textViewTypeAction = itemView.findViewById(R.id.widget_text_typeAction);
-        textViewValue = itemView.findViewById(R.id.widget_text_value);
         buttonSuppr = itemView.findViewById(R.id.widget_tache_suppr_button);
-    }
-
-    public Tache getUnetache() {
-        return tache;
-    }
-
-    public void setUneTache(Tache tache) {
-        this.tache = tache;
     }
 
     //Pour chaque item tache, on peut uniquement le supprimer
@@ -45,13 +34,7 @@ public class TacheViewHolder extends RecyclerView.ViewHolder {
         this.operation = operation;
         this.gamme = gamme;
         this.tache = tache;
-        buttonSuppr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SupprimerTache();
-            }
-        });
-        textViewValue.setText(tache.getValeur() + "");
+        buttonSuppr.setOnClickListener(v -> SupprimerTache());
         textViewTypeAction.setText(tache.getTypeAction().toString());
     }
 

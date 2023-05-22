@@ -19,6 +19,24 @@
     <string name="hintEnvoieMessage">Ecrivez votre message ici</string>
     <string name="envoieMessageBtn">Envoyer</string>
     <string name="etatWifi">état du Wifi :</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="robot_hint">Adresse IP du robot</string>
+    <string name="panne">Panne</string>
+    <string name="automatique">Automatique</string>
+    <string name="manuel">Manuel</string>
+    <string name="grab">Attraper</string>
+    <string name="turn">Tourner</string>
+    <string name="wait">Attendre</string>
+    <string name="typeAction">Action à réaliser</string>
+    <string name="turnRight">Tourner à droite</string>
+    <string name="turnLeft">Tourner à gauche</string>
+    <string name="drop">Déposer</string>
+    <string name="repair">Réparation</string>
+    <string name="newGamme">Nouvelle gamme</string>
+    <string name="newOperation">Nouvelle opération</string>
+    <string name="newTache">Nouvelle Tâche</string>
+    <string name="listGammes">Liste des gammes</string>
+    <string name="deconnexion">Deconnexion</string>
 
     <!-- Dropdown moteurs de l'écran EditTache -->
     <string-array name="listeMoteurs">

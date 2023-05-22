@@ -109,7 +109,7 @@ public class EditOperationActivity extends AbstractActivity {
 
     public void CreateTache()
     {
-        Tache tache = new Tache("id", "description", 0, 'A');
+        Tache tache = new Tache("id", "description", Tache.TypeAction.TournerDroite);
 
         operation.AjouterTache(tache);
 

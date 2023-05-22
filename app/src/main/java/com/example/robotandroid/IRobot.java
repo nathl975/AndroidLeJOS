@@ -12,7 +12,7 @@ public interface IRobot {
 
     public void modifierGamme(Gamme g);
 
-    public void supprimerGamme(Gamme g);
+    public void supprimerGamme(String idGamme);
 
     public void executerGamme(String idGamme);
 

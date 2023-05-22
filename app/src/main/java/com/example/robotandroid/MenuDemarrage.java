@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MenuDemarrage extends AbstractActivity {
 
-//Activity par défaut implémentant l'ensemble des premieres actions : Mode manuel, Mode Panne, Mode Automatique, Connexion et Liste Gamme
+    //Activity par défaut implémentant l'ensemble des premieres actions : Mode manuel, Mode Panne, Mode Automatique, Connexion et Liste Gamme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         IRobot robot = new WifiListener();
@@ -33,27 +33,15 @@ public class MenuDemarrage extends AbstractActivity {
             }
         });
         Button buttonConnexion = findViewById(R.id.buttonConnect);
-        if(controleur.utilisateurConnecté == null)
-        {
-            buttonConnexion.setText("Connecter");
-            buttonConnexion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OpenListeAppareilWifi();
-                }
-            });
-        }
-        else
-        {
-            buttonConnexion.setText("Déconnecter");
-            buttonConnexion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    controleur.deconnecter();
-                    buttonConnexion.setText("Connecter");
-                }
-            });
-        }
+        buttonConnexion.setOnClickListener(v -> OpenListeAppareilWifi());
+
+        Button buttonDeconnexion = findViewById(R.id.buttonDisconnect);
+        buttonDeconnexion.setVisibility(View.GONE);
+        buttonDeconnexion.setOnClickListener(v -> {
+            controleur.utilisateurConnecté = null;
+            buttonDeconnexion.setVisibility(View.GONE);
+            buttonConnexion.setVisibility(View.VISIBLE);
+        });
 
 
         Button buttonAuto = findViewById(R.id.buttonAuto);
@@ -64,22 +52,35 @@ public class MenuDemarrage extends AbstractActivity {
             }
         });
 
-        Button buttonManu = findViewById(R.id.buttonManuel);
-        buttonManu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                controleur.mode("manu");
-            }
+        Button buttonPanne = findViewById(R.id.buttonPanne);
+        Button buttonRepair = findViewById(R.id.buttonRepair);
+        buttonRepair.setVisibility(View.GONE);
+        buttonPanne.setOnClickListener(v -> {
+            controleur.mode("panne");
+            buttonRepair.setVisibility(View.VISIBLE);
+            buttonAuto.setEnabled(false);
+            buttonGamme.setEnabled(false);
+            buttonPanne.setEnabled(false);
         });
 
-        Button buttonPanne = findViewById(R.id.buttonPanne);
-        buttonPanne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                controleur.mode("panne");
-            }
+        buttonRepair.setOnClickListener(l -> {
+            controleur.mode("repa");
+            buttonRepair.setVisibility(View.GONE);
+            buttonAuto.setEnabled(true);
+            buttonGamme.setEnabled(true);
+            buttonPanne.setEnabled(true);
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (controleur.utilisateurConnecté != null) {
+            findViewById(R.id.buttonConnect).setVisibility(View.GONE);
+            findViewById(R.id.buttonDisconnect).setVisibility(View.VISIBLE);
+        }
+    }
+
     //On génère la liste par défaut du programme, il reste à prendre en charge le chargement d'une liste de gamme sauvegardée.
     public void OpenMenuGamme()
     {

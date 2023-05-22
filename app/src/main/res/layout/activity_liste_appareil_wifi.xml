@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".listeAppareilWifi">
 
-    <com.example.robotandroid.androidViews.CustomSpinner
-        android:id="@+id/spinnerListeAppareilWifi"
-        android:layout_width="204dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
-        android:outlineAmbientShadowColor="@color/purple_500"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelListeAppareilWifi"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/labelListeAppareilWifi"
         android:layout_width="253dp"
@@ -31,12 +14,29 @@
         android:layout_marginLeft="76dp"
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
-        android:layout_marginBottom="420dp"
+        android:layout_marginBottom="608dp"
         android:text="@string/labelSpinnerListeAppareil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <com.example.robotandroid.androidViews.CustomSpinner
+        android:id="@+id/spinnerListeAppareilWifi"
+        android:layout_width="204dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:outlineAmbientShadowColor="@color/purple_500"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelListeAppareilWifi"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -59,10 +59,10 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toEndOf="@+id/etatWifiLabel"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136"
+        app:layout_constraintVertical_bias="0.144"
         tools:ignore="NotSibling" />
 
     <TextView

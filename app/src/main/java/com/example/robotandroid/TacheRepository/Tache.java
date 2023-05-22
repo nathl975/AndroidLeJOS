@@ -8,33 +8,27 @@ public class Tache implements Serializable {
     private String id;
     private String description;
     private TypeAction typeAction;
-    private int valeur;
-    private char moteur;
 
-    public enum TypeAction {@SerializedName("Attendre") Attendre, @SerializedName("Tourner") Tourner; }
+    public enum TypeAction {
+        @SerializedName("wait")
+        Attendre,
 
-    public Tache(TypeAction ta, int v) {
-        setTypeAction(ta);
-        this.valeur = v;
+        @SerializedName("turnL")
+        TournerGauche,
+        @SerializedName("turnR")
+        TournerDroite,
+        @SerializedName("grab")
+        Attraper,
+        @SerializedName("drop")
+        Poser;
     }
 
-    public Tache(String id, String description, int valeur)
+    public Tache(String id, String description, TypeAction typeAction)
     {
         this.id = id;
         this.description = description;
-        this.typeAction = TypeAction.Attendre;
-        this.valeur = valeur;
+        this.typeAction = typeAction;
     }
-
-
-    public Tache(String id, String description, int valeur, char moteur)
-    {
-        this.id = id;
-        this.description = description;
-        this.typeAction = TypeAction.Tourner;
-        this.valeur = valeur;
-    }
-
 
     public String getId() {
         return this.id;
@@ -59,12 +53,4 @@ public class Tache implements Serializable {
     public void setTypeAction(TypeAction typeAction) {
         this.typeAction = typeAction;
     }
-
-    public char getMoteur(){ return moteur; }
-
-    public void setMoteur(char m) { moteur = m; }
-
-    public int getValeur() { return valeur; }
-
-    public void setValeur(int v) { valeur = v; }
 }
